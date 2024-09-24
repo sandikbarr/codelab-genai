@@ -39,6 +39,12 @@ export function app(): express.Express {
                         Remove backticks and other markdown formatting.`;
 
         const resp = await generativeModel.generateContent(prompt);
+        console.log(JSON.stringify({
+          severity: 'DEBUG',
+          message: 'Content is generated',
+          prompt: prompt,
+          response: resp.response,
+      }));
         let factArray = '';
 
         if (resp.response.candidates) {
